@@ -17,8 +17,10 @@ var (
 	bold   = color.New(color.Bold).SprintFunc()
 
 	// Styled output
-	greenBold = color.New(color.FgGreen, color.Bold).SprintFunc()
-	redBold   = color.New(color.FgRed, color.Bold).SprintFunc()
+	greenBold  = color.New(color.FgGreen, color.Bold).SprintFunc()
+	redBold    = color.New(color.FgRed, color.Bold).SprintFunc()
+	yellowBold = color.New(color.FgYellow, color.Bold).SprintFunc()
+	blueBold   = color.New(color.FgBlue, color.Bold).SprintFunc()
 )
 
 // PrintReport prints a formatted report to stdout
@@ -86,8 +88,3 @@ func PrintWarning(message string) {
 func PrintInfo(message string) {
 	fmt.Printf("%s %s\n", blueBold("ℹ"), blue(message))
 }
-
-var (
-	yellowBold = color.New(color.FgYellow, color.Bold).SprintFunc()
-	blueBold   = color.New(color.FgBlue, color.Bold).SprintFunc()
-)

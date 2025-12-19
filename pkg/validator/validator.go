@@ -68,7 +68,7 @@ func (v *Validator) Validate(method, path string, response *client.Response) (*V
 	}
 
 	// Find the operation in the spec
-	pathItem, operation, err := v.findOperation(method, path)
+	_, operation, err := v.findOperation(method, path)
 	if err != nil {
 		result.Valid = false
 		result.Errors = append(result.Errors, ValidationError{
@@ -104,8 +104,6 @@ func (v *Validator) Validate(method, path string, response *client.Response) (*V
 		result.Valid = false
 		result.Errors = append(result.Errors, errs...)
 	}
-
-	_ = pathItem // Avoid unused variable warning
 
 	return result, nil
 }
@@ -178,8 +176,6 @@ func (v *Validator) validateStatusCode(operation *openapi3.Operation, statusCode
 		return true
 	}
 
-	statusStr := fmt.Sprintf("%d", statusCode)
-
 	// Check for exact match
 	if operation.Responses.Status(statusCode) != nil {
 		return true
@@ -195,8 +191,6 @@ func (v *Validator) validateStatusCode(operation *openapi3.Operation, statusCode
 	if operation.Responses.Default() != nil {
 		return true
 	}
-
-	_ = statusStr // Avoid unused warning
 
 	return false
 }
