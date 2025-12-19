@@ -9,16 +9,16 @@ import (
 
 var (
 	// Color functions
-	green   = color.New(color.FgGreen).SprintFunc()
-	red     = color.New(color.FgRed).SprintFunc()
-	yellow  = color.New(color.FgYellow).SprintFunc()
-	blue    = color.New(color.FgBlue).SprintFunc()
-	cyan    = color.New(color.FgCyan).SprintFunc()
-	bold    = color.New(color.Bold).SprintFunc()
-	
+	green  = color.New(color.FgGreen).SprintFunc()
+	red    = color.New(color.FgRed).SprintFunc()
+	yellow = color.New(color.FgYellow).SprintFunc()
+	blue   = color.New(color.FgBlue).SprintFunc()
+	cyan   = color.New(color.FgCyan).SprintFunc()
+	bold   = color.New(color.Bold).SprintFunc()
+
 	// Styled output
-	greenBold  = color.New(color.FgGreen, color.Bold).SprintFunc()
-	redBold    = color.New(color.FgRed, color.Bold).SprintFunc()
+	greenBold = color.New(color.FgGreen, color.Bold).SprintFunc()
+	redBold   = color.New(color.FgRed, color.Bold).SprintFunc()
 )
 
 // PrintReport prints a formatted report to stdout
@@ -47,7 +47,7 @@ func PrintReport(report *reporter.Report) {
 		fmt.Println()
 		fmt.Println(bold("Validation Errors:"))
 		fmt.Println()
-		
+
 		for i, err := range report.Errors {
 			fmt.Printf("  %s. %s\n", yellow(fmt.Sprintf("%d", i+1)), bold(err.Field))
 			fmt.Printf("     %s: %s\n", red("Message"), err.Message)

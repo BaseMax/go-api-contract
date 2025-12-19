@@ -16,9 +16,9 @@ import (
 
 // ValidationResult holds the result of a validation
 type ValidationResult struct {
-	Valid       bool
-	StatusCode  int
-	Errors      []ValidationError
+	Valid        bool
+	StatusCode   int
+	Errors       []ValidationError
 	ResponseBody interface{}
 }
 
@@ -179,7 +179,7 @@ func (v *Validator) validateStatusCode(operation *openapi3.Operation, statusCode
 	}
 
 	statusStr := fmt.Sprintf("%d", statusCode)
-	
+
 	// Check for exact match
 	if operation.Responses.Status(statusCode) != nil {
 		return true
