@@ -1,0 +1,97 @@
+openapi: 3.0.0
+info:
+  title: Sample API
+  description: A sample API for testing the API contract validator
+  version: 1.0.0
+servers:
+  - url: https://jsonplaceholder.typicode.com
+    description: JSONPlaceholder API
+paths:
+  /posts/{id}:
+    get:
+      summary: Get a post by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  userId:
+                    type: integer
+                  id:
+                    type: integer
+                  title:
+                    type: string
+                  body:
+                    type: string
+                required:
+                  - userId
+                  - id
+                  - title
+                  - body
+        '404':
+          description: Post not found
+  /posts:
+    get:
+      summary: Get all posts
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    userId:
+                      type: integer
+                    id:
+                      type: integer
+                    title:
+                      type: string
+                    body:
+                      type: string
+    post:
+      summary: Create a new post
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                body:
+                  type: string
+                userId:
+                  type: integer
+              required:
+                - title
+                - body
+                - userId
+      responses:
+        '201':
+          description: Post created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  title:
+                    type: string
+                  body:
+                    type: string
+                  userId:
+                    type: integer
