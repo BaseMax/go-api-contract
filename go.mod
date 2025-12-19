@@ -3,8 +3,11 @@ module github.com/BaseMax/go-api-contract
 go 1.24.11
 
 require (
-	github.com/fatih/color v1.18.0 // indirect
-	github.com/getkin/kin-openapi v0.133.0 // indirect
+	github.com/fatih/color v1.18.0
+	github.com/getkin/kin-openapi v0.133.0
+)
+
+require (
 	github.com/go-openapi/jsonpointer v0.21.0 // indirect
 	github.com/go-openapi/swag v0.23.0 // indirect
 	github.com/gorilla/mux v1.8.1 // indirect

@@ -36,10 +36,13 @@ type Validator struct {
 }
 
 // NewValidator creates a new validator
+// Note: The router is optional and used for advanced validation.
+// If router initialization fails, basic validation will still work.
 func NewValidator(spec *openapi3.T) *Validator {
 	router, err := gorillamux.NewRouter(spec)
 	if err != nil {
-		// Fallback: if gorilla router fails, we'll handle it in validation
+		// Router is optional - basic validation using spec directly will still work
+		// The router is only needed for ValidateWithFilter method
 		router = nil
 	}
 
